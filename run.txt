@@ -1,0 +1,6 @@
+python ./train.py --config=yolact_resnet50_cig_butts_config
+python eval.py --trained_model=./weights/yolact_plus_resnet50_cig_butts_2_587_interrupt.pth --config=yolact_resnet50_cig_butts_config --score_threshold=0.3 --top_k=15 --images=./dataset/cig_butts/real_test:output_images
+python eval.py --trained_model=./weights/yolact_plus_resnet50_cig_butts_4_1229_interrupt.pth --config=yolact_resnet50_cig_butts_config --score_threshold=0.3 --top_k=15 --video_multiframe=4 --video=./dataset/cig_butts/real_test/pigvideo.mp4:output_videos
+
+python ./train.py --config=yolact_resnet50_pigs_config
+python eval_cpu.py --trained_model=./weights/yolact_plus_resnet50_pigs_18_56_interrupt.pth --config=yolact_resnet50_pigs_config --score_threshold=0.3 --top_k=15 --images=./dataset/pigs/real_test:output_images
