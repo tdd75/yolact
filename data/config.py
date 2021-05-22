@@ -183,7 +183,7 @@ cig_butts_dataset = dataset_base.copy({
 })
 
 pigs_dataset = dataset_base.copy({
-  'name': 'Immersive Limit - Cigarette Butts',
+  'name': 'Pigs Dataset',
   'train_info': './dataset/pigs/train/coco_annotations.json',
   'train_images': './dataset/pigs/train/images/',
   'valid_info': './dataset/pigs/val/coco_annotations.json',
@@ -811,7 +811,7 @@ yolact_resnet50_pigs_config = yolact_resnet50_config.copy({
     'num_classes': len(pigs_dataset.class_names) + 1,
 
     # Image Size
-    'max_size': 128,
+    'max_size': 512,
 })
 
 # ----------------------- YOLACT++ CONFIGS ----------------------- #
