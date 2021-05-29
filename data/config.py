@@ -794,16 +794,6 @@ yolact_resnet50_cig_butts_config = yolact_resnet50_config.copy({
     'max_size': 216,
 })
 
-yolact_resnet50_cig_butts_config = yolact_resnet50_config.copy({
-    'name': 'yolact_plus_resnet50_cig_butts',
-    # Dataset stuff
-    'dataset': cig_butts_dataset,
-    'num_classes': len(cig_butts_dataset.class_names) + 1,
-
-    # Image Size
-    'max_size': 128,
-})
-
 yolact_resnet50_pigs_config = yolact_resnet50_config.copy({
     'name': 'yolact_plus_resnet50_pigs',
     # Dataset stuff
@@ -811,7 +801,7 @@ yolact_resnet50_pigs_config = yolact_resnet50_config.copy({
     'num_classes': len(pigs_dataset.class_names) + 1,
 
     # Image Size
-    'max_size': 128,
+    'max_size': 256,
 })
 
 # ----------------------- YOLACT++ CONFIGS ----------------------- #
