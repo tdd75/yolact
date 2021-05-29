@@ -801,7 +801,7 @@ yolact_resnet50_pigs_config = yolact_resnet50_config.copy({
     'num_classes': len(pigs_dataset.class_names) + 1,
 
     # Image Size
-    'max_size': 128,
+    'max_size': 550,
 })
 
 # ----------------------- YOLACT++ CONFIGS ----------------------- #

@@ -573,9 +573,8 @@ def evalimage(net:Yolact, path:str, save_path:str=None):
     frame = torch.from_numpy(cv2.imread(path)).float()
     batch = FastBaseTransform()(frame.unsqueeze(0))
     preds = net(batch)
-
     img_numpy = prep_display(preds, frame, None, None, undo_transform=False)
-    
+
     if save_path is None:
         img_numpy = img_numpy[:, :, (2, 1, 0)]
 
@@ -596,9 +595,7 @@ def evalimages(net:Yolact, input_folder:str, output_folder:str):
         name = os.path.basename(path)
         name = '.'.join(name.split('.')[:-1]) + '.png'
         out_path = os.path.join(output_folder, name)
-        start  = time.time()
         evalimage(net, path, out_path)
-        print("Time: "+ str(time.time() - start))
         print(path + ' -> ' + out_path)
     print('Done.')
 
@@ -805,9 +802,9 @@ def savevideo(net:Yolact, in_path:str, out_path:str):
 def evaluate(net:Yolact, dataset, train_mode=False):
     net.detect.use_fast_nms = args.fast_nms
     cfg.mask_proto_debug = args.mask_proto_debug
-
     if args.image is not None:
         if ':' in args.image:
+            start = time.time()
             inp, out = args.image.split(':')
             evalimage(net, inp, out)
         else:
@@ -828,7 +825,6 @@ def evaluate(net:Yolact, dataset, train_mode=False):
     frame_times = MovingAverage()
     dataset_size = len(dataset) if args.max_images < 0 else min(args.max_images, len(dataset))
     progress_bar = ProgressBar(30, dataset_size)
-
     print()
 
     if not args.display and not args.benchmark:
