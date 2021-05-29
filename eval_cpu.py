@@ -596,8 +596,9 @@ def evalimages(net:Yolact, input_folder:str, output_folder:str):
         name = os.path.basename(path)
         name = '.'.join(name.split('.')[:-1]) + '.png'
         out_path = os.path.join(output_folder, name)
-
+        start  = time.time()
         evalimage(net, path, out_path)
+        print("Time: "+ str(time.time() - start))
         print(path + ' -> ' + out_path)
     print('Done.')
 
@@ -893,7 +894,7 @@ def evaluate(net:Yolact, dataset, train_mode=False):
             # Since that's technically initialization, don't include those in the FPS calculations.
             if it > 1:
                 frame_times.add(timer.total_time())
-            
+
             if args.display:
                 if it > 1:
                     print('Avg FPS: %.4f' % (1 / frame_times.get_avg()))
